@@ -1,26 +1,29 @@
 {
   "name": "@cc-heart/cc-vue-ui",
-  "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "build:site": "gulp"
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js"
+      "import": "./es/components/index.js"
     }
   },
+  "license": "MIT",
   "dependencies": {
     "@cc-heart/eslint-config": "^0.0.5",
-    "@cc-heart/utils": "^2.0.17",
+    "@cc-heart/utils": "^3.1.0",
     "@types/node": "^20.4.5",
-    "@types/vue-i18n": "^7.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "rimraf": "^5.0.1",
     "rollup": "^3.26.3",
     "sass": "^1.64.1",
     "unocss": "^0.51.13",
@@ -32,6 +35,6 @@
     "prettier": "^2.8.8",
     "typescript": "^5.1.6",
     "vite": "^4.4.7",
-    "vue-tsc": "^1.8.6"
+    "vue-tsc": "^1.8.8"
   }
 }

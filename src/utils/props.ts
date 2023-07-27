@@ -1,4 +1,4 @@
-import { hasOwnProperty, isFn } from '@cc-heart/utils'
+import { hasOwn, isFn } from '@cc-heart/utils'
 import { PropType } from 'vue'
 
 export type propTypes<
@@ -37,7 +37,7 @@ export const buildProp = <
       return prop.validator?.(val) || false
     }
     const validateSet = new Set(prop.validateField || [])
-    if (hasOwnProperty(prop, 'default')) {
+    if (hasOwn(prop, 'default')) {
       validateSet.add(prop.default)
     }
     return validateSet.has(val)

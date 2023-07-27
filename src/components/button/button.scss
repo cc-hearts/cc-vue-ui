@@ -1,57 +1,7 @@
-<script setup lang="ts">
-import { computed, reactive, unref } from 'vue'
-import { buttonProps } from './button'
-import { useNamespace } from '@/hooks'
 
-const props = defineProps(buttonProps)
-const state = reactive({
-  x: '0px',
-  y: '0px',
-})
-const ns = useNamespace('button')
-const styles = computed(() => {
-  // TODO: size
-  const styles = {
-    primary: '#65b787',
-    'danger-color': '#fff',
-    'active-danger-color': '#fff',
-    'active-primary-color': '#fff',
-    'flat-color': '#3ecd79a8',
-    'primary-color': '#fff',
-    'default-bgc': 'transparent',
-    'primary-bgc': '#65b787',
-    'danger-bgc': '#ee8079',
-    'default-border-color': '#ccc',
-    ...unref(state),
-  }
-
-  return ns.genCssVar({
-    color: '#333',
-    ...styles,
-  })
-})
-
-const handleClick = (e: MouseEvent) => {
-  if (props.disabled) return
-  state['x'] = e.offsetX + 'px'
-  state['y'] = e.offsetY + 'px'
-}
-</script>
-<template>
-  <button
-    ref="btn"
-    :class="[ns.cls, ns.e(props.type)]"
-    :style="styles"
-    @click="handleClick"
-    :disabled="disabled"
-  >
-    <slot></slot>
-  </button>
-</template>
-<style lang="scss">
-@use '@/assets/scss/var/variable.scss' as *;
-@use '@/assets/scss/common/mixins.scss' as *;
-@use '@/assets/scss/common/function.scss' as *;
+@use '../../assets/scss/var/variable.scss' as *;
+@use '../../assets/scss/common/mixins.scss' as *;
+@use '../../assets/scss/common/function.scss' as *;
 
 @mixin changeColor($color: getCssVarName('button', 'color')) {
   color: var($color);
@@ -221,4 +171,3 @@ const handleClick = (e: MouseEvent) => {
     }
   }
 }
-</style>
