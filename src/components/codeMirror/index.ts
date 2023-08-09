@@ -1,2 +1,2 @@
-import CodeMirror from './codeMirror.vue'
+import CodeMirror from './codeMirror'
 export { CodeMirror }

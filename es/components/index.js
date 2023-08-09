@@ -1,7 +1,6 @@
-import { CcButton as e } from "./button/index.js";
-import { default as m } from "./codeMirror/codeMirror.vue.js";
-import "./codeMirror/codeMirror.vue2.js";
+import { CcButton as t } from "./button/index.js";
+import { default as f } from "./codeMirror/codeMirror.js";
 export {
-  e as CcButton,
-  m as CodeMirror
+  t as CcButton,
+  f as CodeMirror
 };
