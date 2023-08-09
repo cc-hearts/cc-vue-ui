@@ -1,4 +1,5 @@
-const c = "cc";
+const c = "cc", e = c;
 export {
-  c as defaultNamespace
+  c as defaultNamespace,
+  e as prefixCls
 };

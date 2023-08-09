@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import Button from './components/button/button.vue'
+import { CcButton } from './components/button'
+import { CodeMirror } from './components/codeMirror'
 </script>
 
 <template>
-  <Button>123</Button>
+  <CcButton>123</CcButton>
+  <CodeMirror></CodeMirror>
 </template>
 
 <style lang="scss"></style>
