@@ -1,4 +1,4 @@
-@use '../../assets/scss/var/variable.scss' as var;
+@use '@/assets/scss/var/variable.scss' as var;
 
 .code-mirror {
   --btn-background-color: rgb(246, 248, 250);
@@ -19,7 +19,7 @@
   overflow: hidden;
   position: relative;
 
-  &>div {
+  & > div {
     width: 100%;
     height: 100%;
   }
