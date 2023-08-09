@@ -2,13 +2,14 @@ import { defineComponent as V, ref as s, reactive as k, watch as n, onMounted as
 import { basicSetup as B } from "../../node_modules/.pnpm/codemirror@6.0.1_@lezer_common@1.0.3/node_modules/codemirror/dist/index.js";
 import { css as H } from "../../node_modules/.pnpm/@codemirror_lang-css@6.2.1_@codemirror_view@6.16.0/node_modules/@codemirror/lang-css/dist/index.js";
 import { html as M } from "../../node_modules/.pnpm/@codemirror_lang-html@6.4.5/node_modules/@codemirror/lang-html/dist/index.js";
-import { javascript as v } from "../../node_modules/.pnpm/@codemirror_lang-javascript@6.1.9/node_modules/@codemirror/lang-javascript/dist/index.js";
+import { javascript as p } from "../../node_modules/.pnpm/@codemirror_lang-javascript@6.1.9/node_modules/@codemirror/lang-javascript/dist/index.js";
 import { json as Z } from "../../node_modules/.pnpm/@codemirror_lang-json@6.0.1/node_modules/@codemirror/lang-json/dist/index.js";
 import { oneDark as L } from "../../node_modules/.pnpm/@codemirror_theme-one-dark@6.1.2/node_modules/@codemirror/theme-one-dark/dist/index.js";
 import { copy as R } from "../../node_modules/.pnpm/@cc-heart_utils-client@0.0.16/node_modules/@cc-heart/utils-client/dist/esm/index.js";
 import { usePrefixCls as T } from "../../hooks/usePrefixCls.js";
+import "./codeMirror.css";
 import { EditorView as c } from "../../node_modules/.pnpm/@codemirror_view@6.16.0/node_modules/@codemirror/view/dist/index.js";
-const J = /* @__PURE__ */ V({
+const K = /* @__PURE__ */ V({
   props: {
     readonly: {
       type: Boolean,
@@ -29,7 +30,7 @@ const J = /* @__PURE__ */ V({
     }
   },
   setup(o, {
-    emit: p,
+    emit: v,
     expose: h
   }) {
     const g = T("code"), l = s(""), w = k({
@@ -40,7 +41,7 @@ const J = /* @__PURE__ */ V({
         i.value = !1;
       }, 1e3);
     };
-    let t, r = () => v({
+    let t, r = () => p({
       typescript: !0,
       jsx: !0
     });
@@ -56,17 +57,17 @@ const J = /* @__PURE__ */ V({
           r = () => Z();
           break;
         default:
-          r = () => v();
+          r = () => p();
       }
     }
     n(() => o.lang, (e) => x(e)), n(() => o.dark, (e) => u(e));
     function u(e) {
       t && t && t.destroy();
-      const m = [B, r(), c.editable.of(!o.readonly), c.editorAttributes.of({
+      const d = [B, r(), c.editable.of(!o.readonly), c.editorAttributes.of({
         class: g
       })];
-      e && m.push(L), t = new c({
-        extensions: m,
+      e && d.push(L), t = new c({
+        extensions: d,
         parent: y.value,
         doc: o.value || l.value,
         dispatch(C) {
@@ -77,9 +78,9 @@ const J = /* @__PURE__ */ V({
     S(() => {
       u();
     }), n(() => l.value, (e) => {
-      l.value !== o.value && p("change", e);
+      l.value !== o.value && v("change", e);
     }), n(() => o.value, (e) => {
-      e && e !== l.value && (d(e), l.value = e);
+      e && e !== l.value && (m(e), l.value = e);
     });
     function j() {
       t.dispatch({
@@ -93,7 +94,7 @@ const J = /* @__PURE__ */ V({
       return t.viewState.state.doc.text.join(`
 `);
     }
-    function d(e) {
+    function m(e) {
       t.dispatch({
         changes: [{
           from: 0,
@@ -104,7 +105,7 @@ const J = /* @__PURE__ */ V({
     return h({
       clear: j,
       getValue: f,
-      setValue: d
+      setValue: m
     }), () => a("div", {
       class: "code-mirror"
     }, [a("div", {
@@ -132,5 +133,5 @@ const J = /* @__PURE__ */ V({
   }
 });
 export {
-  J as default
+  K as default
 };
