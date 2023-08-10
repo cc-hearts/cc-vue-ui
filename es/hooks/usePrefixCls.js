@@ -6,4 +6,3 @@ function usePrefixCls(cls) {
 }
 
 export { usePrefixCls };
-  

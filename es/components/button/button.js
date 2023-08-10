@@ -1,4 +1,4 @@
-import { defineComponent, reactive, computed, unref } from 'vue';
+import { defineComponent, reactive, computed, unref, createVNode } from 'vue';
 import { useNamespace } from '../../hooks/useNamespace.js';
 import { buttonProps } from './props.js';
 
@@ -7,7 +7,6 @@ var Button = defineComponent({
   setup(props, {
     slots
   }) {
-    const h = this.$createElement;
     const state = reactive({
       x: '0px',
       y: '0px'
@@ -38,16 +37,12 @@ var Button = defineComponent({
       state['x'] = e.offsetX + 'px';
       state['y'] = e.offsetY + 'px';
     };
-    return () => h("button", {
+    return () => createVNode("button", {
       "ref": "btn",
       "class": `${ns.cls} ${ns.e(props.type)}`,
       "style": styles.value,
-      "on": {
-        "click": handleClick
-      },
-      "attrs": {
-        "disabled": props.disabled
-      }
+      "onClick": handleClick,
+      "disabled": props.disabled
     }, [slots.default?.()]);
   }
 });

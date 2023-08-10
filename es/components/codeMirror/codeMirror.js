@@ -1,10 +1,10 @@
+import { defineComponent, ref, reactive, watch, onMounted, createVNode } from 'vue';
 import { basicSetup, EditorView } from 'codemirror';
 import { css } from '@codemirror/lang-css';
 import { html } from '@codemirror/lang-html';
 import { javascript } from '@codemirror/lang-javascript';
 import { json } from '@codemirror/lang-json';
 import { oneDark } from '@codemirror/theme-one-dark';
-import { defineComponent, ref, reactive, watch, onMounted } from 'vue';
 import { copy } from '@cc-heart/utils-client';
 import { usePrefixCls } from '../../hooks/usePrefixCls.js';
 
@@ -34,7 +34,6 @@ var codeMirror = defineComponent({
     emit: emits,
     expose
   }) {
-    const h = this.$createElement;
     const cls = usePrefixCls('code');
     const val = ref('');
     const state = reactive({
@@ -128,40 +127,30 @@ var codeMirror = defineComponent({
       getValue,
       setValue
     });
-    return () => h("div", {
+    return () => createVNode("div", {
       "class": "code-mirror"
-    }, [h("div", {
-      "ref": "codeRef"
-    }), h("button", {
-      "class": isCopyCodeState ? 'copy-btn-copied' : '' + ' copy-btn',
-      "on": {
-        "click": copyCode
-      }
-    }, [h("svg", {
-      "attrs": {
-        "xmlns": "http://www.w3.org/2000/svg",
-        "width": "1em",
-        "height": "1em",
-        "viewBox": "0 0 256 256"
-      }
-    }, [h("path", {
-      "attrs": {
-        "fill": "currentColor",
-        "d": "M216 34H88a6 6 0 0 0-6 6v42H40a6 6 0 0 0-6 6v128a6 6 0 0 0 6 6h128a6 6 0 0 0 6-6v-42h42a6 6 0 0 0 6-6V40a6 6 0 0 0-6-6Zm-54 176H46V94h116Zm48-48h-36V88a6 6 0 0 0-6-6H94V46h116Z"
-      }
-    })]), h("svg", {
-      "attrs": {
-        "xmlns": "http://www.w3.org/2000/svg",
-        "width": "1em",
-        "height": "1em",
-        "viewBox": "0 0 24 24"
-      }
-    }, [h("path", {
-      "attrs": {
-        "fill": "currentColor",
-        "d": "M18.9 8.1L9 18l-4.95-4.95l.71-.71L9 16.59l9.19-9.2l.71.71Z"
-      }
-    })])])]);
+    }, [createVNode("div", {
+      "ref": codeRef
+    }, null), createVNode("button", {
+      "class": (isCopyCodeState.value ? 'copy-btn-copied' : '') + ' copy-btn',
+      "onClick": copyCode
+    }, [createVNode("svg", {
+      "xmlns": "http://www.w3.org/2000/svg",
+      "width": "1em",
+      "height": "1em",
+      "viewBox": "0 0 256 256"
+    }, [createVNode("path", {
+      "fill": "currentColor",
+      "d": "M216 34H88a6 6 0 0 0-6 6v42H40a6 6 0 0 0-6 6v128a6 6 0 0 0 6 6h128a6 6 0 0 0 6-6v-42h42a6 6 0 0 0 6-6V40a6 6 0 0 0-6-6Zm-54 176H46V94h116Zm48-48h-36V88a6 6 0 0 0-6-6H94V46h116Z"
+    }, null)]), createVNode("svg", {
+      "xmlns": "http://www.w3.org/2000/svg",
+      "width": "1em",
+      "height": "1em",
+      "viewBox": "0 0 24 24"
+    }, [createVNode("path", {
+      "fill": "currentColor",
+      "d": "M18.9 8.1L9 18l-4.95-4.95l.71-.71L9 16.59l9.19-9.2l.71.71Z"
+    }, null)])])]);
   }
 });
 

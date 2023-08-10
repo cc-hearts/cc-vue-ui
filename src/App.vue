@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CcButton } from './components/button'
+import { CcButton } from '../es/components/button'
 import { CodeMirror } from './components/codeMirror'
 </script>
 

@@ -5,6 +5,7 @@ import gulpSass from 'gulp-sass'
 import { execSync } from 'child_process'
 import { rimrafSync } from 'rimraf'
 import transformScssAlias from './plugins/transformScssAlias.js'
+import { generatorExports } from './build/exports.js'
 import { resolve } from 'path'
 const sass = gulpSass(dartSass)
 export const clean = (done) => {
@@ -33,4 +34,9 @@ export const buildComponents = async (done) => {
   done()
 }
 
-export default series(clean, buildComponents, clear, buildStyle)
+export const buildExport = async done => {
+  await generatorExports('./es/components')
+  done()
+}
+
+export default series(clean, buildComponents, clear, buildStyle, buildExport)

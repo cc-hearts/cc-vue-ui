@@ -70,7 +70,7 @@ export const defineInputOption = (input: string) => {
         babelHelpers: 'bundled',
         exclude: 'node_modules/**',
         extensions: ['.tsx', '.ts', '.js'],
-        presets: ['@vue/babel-preset-jsx'],
+        plugins: ['@vue/babel-plugin-jsx'],
       }),
       vue({}),
     ],

@@ -153,9 +153,9 @@ export default defineComponent({
 
     return () => (
       <div class="code-mirror">
-        <div ref="codeRef"></div>
+        <div ref={codeRef}></div>
         <button
-          class={isCopyCodeState ? 'copy-btn-copied' : '' + ' copy-btn'}
+          class={(isCopyCodeState.value ? 'copy-btn-copied' : '') + ' copy-btn'}
           onClick={copyCode}
         >
           <svg
