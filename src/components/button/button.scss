@@ -28,26 +28,20 @@
   background-color: var(#{$bgColor});
 }
 
-@mixin primaryMixins(
-  $bgColor: getCssVarName('button', 'primary', 'bgc'),
-  $color: getCssVarName('button', 'color')
-) {
+@mixin primaryMixins($bgColor: getCssVarName('button', 'primary', 'bgc'),
+  $color: getCssVarName('button', 'color')) {
   @include colorAndBgcMixins($color, $bgColor);
 }
 
-@mixin flatMixins(
-  $bgColor: getCssVarName('button', 'default', 'bgc'),
-  $color: getCssVarName('button', 'color')
-) {
+@mixin flatMixins($bgColor: getCssVarName('button', 'default', 'bgc'),
+  $color: getCssVarName('button', 'color')) {
   @include colorAndBgcMixins($color, $bgColor);
 }
 
 @mixin gradientMixins($color: getCssVarName('button', 'primary', 'bgc')) {
-  background-image: radial-gradient(
-    circle,
-    var($color) 10%,
-    transparent 10.01%
-  );
+  background-image: radial-gradient(circle,
+      var($color) 10%,
+      transparent 10.01%);
 }
 
 @include b('button') {
@@ -118,15 +112,11 @@
   }
 
   @include e('primary') {
-    @include primaryMixins(
-      getCssVarName('button', 'primary', 'bgc'),
-      getCssVarName('button', 'primary', 'color')
-    );
+    @include primaryMixins(getCssVarName('button', 'primary', 'bgc'),
+      getCssVarName('button', 'primary', 'color'));
 
     &::after {
-      @include gradientMixins(
-        getCssVarName('button', 'active', 'primary', 'color')
-      );
+      @include gradientMixins(getCssVarName('button', 'active', 'primary', 'color'));
     }
 
     @include m('disabled') {
@@ -136,8 +126,7 @@
 
   @include e('dashed') {
     @include default();
-    border: 1px dashed
-      var(getCssVarName('button', 'default', 'border', 'color'));
+    border: 1px dashed var(getCssVarName('button', 'default', 'border', 'color'));
 
     @include m('disabled') {
       @include disabled();
@@ -145,15 +134,11 @@
   }
 
   @include e('danger') {
-    @include primaryMixins(
-      getCssVarName('button', 'danger', 'bgc'),
-      getCssVarName('button', 'danger', 'color')
-    );
+    @include primaryMixins(getCssVarName('button', 'danger', 'bgc'),
+      getCssVarName('button', 'danger', 'color'));
 
     &::after {
-      @include gradientMixins(
-        getCssVarName('button', 'active', 'danger', 'color')
-      );
+      @include gradientMixins(getCssVarName('button', 'active', 'danger', 'color'));
     }
 
     @include m('disabled') {
@@ -165,10 +150,8 @@
     transition: color 0.3s, background-color 0.5s;
 
     &:not([disabled]):hover {
-      @include flatMixins(
-        getCssVarName('button', 'bgc'),
-        getCssVarName('button', 'flat', 'color')
-      );
+      @include flatMixins(getCssVarName('button', 'bgc'),
+        getCssVarName('button', 'flat', 'color'));
     }
 
     @include m('disabled') {

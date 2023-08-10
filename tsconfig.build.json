@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "outDir": "dist/types",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -24,7 +26,9 @@
     "strict": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "noEmit": true
+    "noEmit": true,
+    "emitDeclarationOnly": true,
+    "allowImportingTsExtensions": true
   },
   "exclude": [
     "__test__/**/*",

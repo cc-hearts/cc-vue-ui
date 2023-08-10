@@ -3,7 +3,7 @@ import { Transform } from 'stream'
 
 const trans = (transform) => new Transform({ transform, objectMode: true })
 
-function replaceAlias(alias, ctx) {
+export function replaceAlias(alias, ctx) {
   const RE = new Function(`return /^['"](${Object.keys(alias).join('|')})/g`)()
   return ctx.replace(/['"](.*?)['"]/gm, (value) => {
     return value.replace(RE, (matchVReg) => {
