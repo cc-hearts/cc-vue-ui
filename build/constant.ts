@@ -1,14 +1,14 @@
 import babel from '@rollup/plugin-babel'
 import postcss from 'rollup-plugin-postcss'
 import vue from 'rollup-plugin-vue'
-import alias from '@rollup/plugin-alias';
-import { resolve as _resolve } from 'node:path';
+import alias from '@rollup/plugin-alias'
+import { resolve as _resolve } from 'node:path'
 import typescript from '@rollup/plugin-typescript'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
-import { readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs'
 import replace from 'rollup-plugin-replace'
-import { replaceAlias } from '../plugins/transformScssAlias.js';
+import { replaceAlias } from '../plugins/transformScssAlias.js'
 const _alias = {
   '@': _resolve('./src'),
 }
@@ -34,7 +34,13 @@ export const defineOutputOption = () => {
 export const defineInputOption = (input: string) => {
   return {
     input,
-    external: ['vue', /node_modules/, '@cc-heart/utils-client', /\.scss/, /\.css/],
+    external: [
+      'vue',
+      /node_modules/,
+      '@cc-heart/utils-client',
+      /\.scss/,
+      /\.css/,
+    ],
     plugins: [
       {
         name: 'reload',
@@ -44,15 +50,13 @@ export const defineInputOption = (input: string) => {
             return replaceAlias(_alias, ctx)
           }
           return null
-        }
+        },
       },
       alias({
-        'entries': [
-          { find: '@', replacement: _resolve('./src') },
-        ]
+        entries: [{ find: '@', replacement: _resolve('./src') }],
       }),
       replace({
-        '.scss': '.css'
+        '.scss': '.css',
       }),
       resolve(),
       postcss({
@@ -72,4 +76,3 @@ export const defineInputOption = (input: string) => {
     ],
   }
 }
-

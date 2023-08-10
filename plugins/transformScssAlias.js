@@ -1,6 +1,5 @@
 import { Transform } from 'stream'
 
-
 const trans = (transform) => new Transform({ transform, objectMode: true })
 
 export function replaceAlias(alias, ctx) {
@@ -18,8 +17,8 @@ export function replaceAlias(alias, ctx) {
 
 function transformScssAlias(alias, scssPath) {
   return trans(function (file, encoding, callback) {
-    console.log(scssPath);
-    scssPath.push({ })
+    console.log(scssPath)
+    scssPath.push({})
     const ctx = file.contents.toString('utf-8')
     const result = replaceAlias(alias, ctx)
     file.contents = Buffer.from(result)
