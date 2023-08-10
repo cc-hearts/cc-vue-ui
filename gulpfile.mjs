@@ -17,17 +17,12 @@ export const clear = (done) => {
 }
 
 export const buildStyle = async (done) => {
-  // console.log(await src('./src/components/**/*.scss').pipe(dest('output/')));
-  // await src('./src/components/**/*.scss')
-  // .pipe((file) => {
-  //   console.log(file);
-  // })
   const alias = {
     '@': resolve('./src'),
   }
-  console.log(resolve('/src'))
+  const scssPath = []
   await src('./src/components/**/*.scss')
-    .pipe(transformScssAlias(alias))
+    .pipe(transformScssAlias(alias, scssPath))
     .pipe(sass().on('error', sass.logError))
     .pipe(dest('./es/components'))
   done()

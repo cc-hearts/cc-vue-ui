@@ -1,7 +1,6 @@
 import { defineComponent, computed, reactive, unref } from 'vue'
 import { useNamespace } from '@/hooks'
 import { buttonProps } from './props'
-import './button.scss'
 export default defineComponent({
   props: buttonProps,
   setup(props, { slots }) {

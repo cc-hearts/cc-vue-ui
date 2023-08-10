@@ -7,7 +7,7 @@ import { oneDark } from '@codemirror/theme-one-dark'
 import { defineComponent, onMounted, reactive, ref, watch } from 'vue'
 import { copy } from '@cc-heart/utils-client'
 import { usePrefixCls } from '@/hooks'
-import './codeMirror.scss'
+
 interface viewInstance {
   viewState: {
     state: {

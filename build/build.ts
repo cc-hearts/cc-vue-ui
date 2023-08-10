@@ -2,7 +2,6 @@ import { readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { defineInputOption, defineOutputOption } from './constant.js'
 import { rollup } from 'rollup'
-import { generatorOutputPath } from './utils.js'
 async function build(inputOption: any, outputOption: any) {
   try {
     const bundle = await rollup(inputOption)
@@ -28,8 +27,7 @@ async function loadInputOption(option: Option) {
     })
 
   const task = inputOptions.map(async (inputOption) => {
-    const filePath = generatorOutputPath({ entry: inputOption.input })
-    const outputOptions = defineOutputOption({ filePath })
+    const outputOptions = defineOutputOption()
     return outputOptions.map(async (option) => {
       await build(inputOption, option)
     })
